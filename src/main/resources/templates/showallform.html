@@ -7,10 +7,10 @@
 <body>
 <form th:object="${studentlist}" th:action="@{/mainmenu}" method="get">
 	<ul th:each="student: ${studentlist}">
-		<li><span th:text="${student.id}">ID:</span></li>
-		<li><span th:text="${student.name}">Name:</span></li>
-		<li><span th:text="${student.emailAddress}">Email:</span></li>
-		<li><span th:text="${student.birthday}">Birthday:</span></li>
+		<li><span th:text="${student.id}">ID: </span></li>
+		<li><span th:text="${student.name}">Name: </span></li>
+		<li><span th:text="${student.emailAddress}">Email: </span></li>
+		<li><span th:text="${student.birthday}">Birthday: </span></li>
 	</ul>
 	<input type="submit" value="回選單"/>
 </form>
