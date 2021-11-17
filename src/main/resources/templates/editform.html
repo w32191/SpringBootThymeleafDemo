@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>編輯完成</title>
+</head>
+<body>
+<div>
+	<form th:object="${editedStudent}" method="get" th:action="@{/students}">
+		<h1>已完成編輯：</h1>
+		<p>
+			Student ID: <span th:text="${editedStudent.id}"></span>
+		</p>
+		<p>
+			Name: <span th:text="${editedStudent.name}"></span>
+		</p>
+		<p>
+			Email: <span th:text="${editedStudent.emailAddress}"></span>
+		</p>
+		<p>
+			Birthday: <span th:text="${editedStudent.birthday}"></span>
+		</p>
+
+		<button type="submit">回清單</button>
+	</form>
+</div>
+</body>
+</html>

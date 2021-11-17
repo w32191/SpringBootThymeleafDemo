@@ -2,40 +2,69 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
+<
 	<link rel="stylesheet" th:href="@{/style.css}">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
 	      rel="stylesheet">
+
 	<title>Student List</title>
 </head>
 <body>
 <div class="container">
 	<h2>Student List</h2>
+
 	<form class="header" th:action="@{/students}" method="post" th:object="${studentObject}">
+
 		<input type="text" id="inputName" placeholder="Name..." th:field="*{name}">
 		<input type="text" id="inputEmailAddress" placeholder="Email Address..."
 		       th:field="*{emailAddress}">
-		<input type="text" id="inputBirthday" placeholder="Birthday..." th:field="*{birthday}">
-		<button type="submit" class="addBtn">Add</button>
+		<input type="text" id="inputBirthday" placeholder="Birthday...(yyyy-mm-dd)" th:field="*{birthday}">
+		<p><button type="submit" class="addBtn">新增</button></p>
+
+
 	</form>
+<hr/>
+
 	<ul th:each="student: ${studentList}">
+
 		<li>
-
-			<p>
-				Student ID: <span th:text="${student.id}"></span>
-			</p>
-			<p>
-				Name: <span th:text="${student.name}">Name:</span>
-			</p>
-			<p>
-				Email Address: <span th:text="${student.emailAddress}">Email Address:</span>
-			</p>
-			<p>
-				Birthday: <span th:text="${student.birthday}">Birthday:</span>
-			</p>
-
-			<span class="close">x</span>
+			<form th:action="@{/editform}" method="post" th:object="${student}">
+				<p th:text="'ID: '+ ${student.id}">
+					<input type="hidden" name="id" th:value="${student.id}">
+				</p>
+				<p>
+					Name: <input type="text" th:value="${student.name}" placeholder="Edit name...">
+				</p>
+				<p>
+					Email Address: <input type="text" name="email_address" th:value="${student.emailAddress}"  placeholder="Edit e-mail...">
+				</p>
+				<p>
+					Birthday: <input type="text" name="birthday"  th:value="${student.birthday}" placeholder="Edit birthday...">
+				</p>
+				<button type="submit" class="edit">編輯</button>
+				<button type="button" class="close"
+				      th:onclick="'javascript:deleteStudent(event,this,' + ${student.id} + ')'">刪除</button>
+			</form>
 		</li>
 	</ul>
+
+
 </div>
+
+<script>
+  const deleteStudent = (event, element, id) => {
+    event.stopPropagation();
+    fetch(
+        'student/' + id, {
+          method: 'DELETE',
+          headers: {'Content-Type': 'application/json'},
+        }
+    ).then(function (response) {
+      element.parentNode.parentNode.parentNode.removeChild(element.parentNode.parentNode);
+    })
+  }
+</script>
+
+
 </body>
 </html>

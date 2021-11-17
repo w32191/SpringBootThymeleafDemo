@@ -28,8 +28,8 @@ public class StudentServiceImpl implements StudentService {
 
     if (stu != null) {
       stu.setName(student.getName());
-      stu.setBirthday(student.getBirthday());
       stu.setEmailAddress(student.getEmailAddress());
+      stu.setBirthday(student.getBirthday());
       studentRepository.saveAndFlush(stu);
       return stu;
     } else {
