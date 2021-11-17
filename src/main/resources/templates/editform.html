@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" th:href="@{/style.css}">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+	      rel="stylesheet">
+	<title>編輯完成</title>
+</head>
+<body>
+<div>
+	<form th:object="${editedStudent}" method="get" th:action="@{/students}">
+		<h3>已完成編輯：</h3>
+<!--		<ul>-->
+<!--			<li>-->
+<!--				Student ID: <span th:text="${editedStudent.id}"></span>-->
+<!--			</li>-->
+<!--			<li>-->
+<!--				Name: <span th:text="${editedStudent.name}"></span>-->
+<!--			</li>-->
+<!--			<li>-->
+<!--				Email: <span th:text="${editedStudent.emailAddress}"></span>-->
+<!--			</li>-->
+<!--			<li>-->
+<!--				Birthday: <span th:text="${editedStudent.birthday}"></span>-->
+<!--			</li>-->
+<!--		</ul>-->
+
+		<p>
+			Student ID: <span th:text="${editedStudent.id}"></span>
+		</p>
+		<p>
+			Name: <span th:text="${editedStudent.name}"></span>
+		</p>
+		<p>
+			Email: <span th:text="${editedStudent.emailAddress}"></span>
+		</p>
+		<p>
+			Birthday: <span th:text="${editedStudent.birthday}"></span>
+		</p>
+
+		<button type="submit">回清單</button>
+	</form>
+</div>
+</body>
+</html>
