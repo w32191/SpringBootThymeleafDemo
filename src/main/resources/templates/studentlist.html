@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" th:href="@{/style.css}">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+	      rel="stylesheet">
+	<title>Student List</title>
+</head>
+<body>
+<div class="container">
+	<h2>Student List</h2>
+	<form class="header" th:action="@{/students}" method="post" th:object="${studentObject}">
+		<input type="text" id="inputName" placeholder="Name..." th:field="*{name}">
+		<input type="text" id="inputEmailAddress" placeholder="Email Address..."
+		       th:field="*{emailAddress}">
+		<input type="text" id="inputBirthday" placeholder="Birthday..." th:field="*{birthday}">
+		<button type="submit" class="addBtn">Add</button>
+	</form>
+	<ul th:each="student: ${studentList}">
+		<li>
+
+			<p>
+				Student ID: <span th:text="${student.id}"></span>
+			</p>
+			<p>
+				Name: <span th:text="${student.name}">Name:</span>
+			</p>
+			<p>
+				Email Address: <span th:text="${student.emailAddress}">Email Address:</span>
+			</p>
+			<p>
+				Birthday: <span th:text="${student.birthday}">Birthday:</span>
+			</p>
+
+			<span class="close">x</span>
+		</li>
+	</ul>
+</div>
+</body>
+</html>

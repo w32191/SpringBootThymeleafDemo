@@ -15,32 +15,28 @@ public class StudentController {
   @Autowired
   private StudentService studentService;
 
-  //回選單
-  @GetMapping("/mainmenu")
-  public String menu() {
-    return "mainmenu";
+  @GetMapping("/students")
+  public String getAllStudents(Model model) {
+    Iterable<Student> studentsList = studentService.getAllStudents();
+    Student emptyStudent = new Student();
+
+    model.addAttribute("studentList", studentsList);
+    model.addAttribute("studentObject", emptyStudent);
+
+    return "studentlist";
   }
 
-  //新增畫面,將一個空的Student Object 用model傳給view
-  @GetMapping("/addform")
-  public String addForm(Model model) {
-    Student student = new Student();
-    model.addAttribute("student", student);
-    return "addform";
-  }
-  //
-  @PostMapping("/add")
-  public String add(@ModelAttribute Student student, Model model) {
-    Student result = studentService.creatStudent(student);
-    model.addAttribute("studentresult", result);
-    return "add";
-  }
 
-  @GetMapping("/showallform")
-  public String showAllStudent(Model model) {
-    Iterable<Student> studentList = studentService.findAll();
-    model.addAttribute("studentlist", studentList);
-    return "showallform";
+  @PostMapping("/students")
+  public String createStudent(@ModelAttribute Student student, Model model) {
+
+    Iterable<Student> allStudentList = studentService.creatStudent(student);
+    Student emptyStudent = new Student();
+
+    model.addAttribute("studentList", allStudentList);
+    model.addAttribute("studentObject", emptyStudent);
+
+    return "studentlist";
   }
 
 }

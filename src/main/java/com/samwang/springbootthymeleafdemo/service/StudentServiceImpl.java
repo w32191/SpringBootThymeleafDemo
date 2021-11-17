@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class StudentServiceimpl implements StudentService {
+public class StudentServiceImpl implements StudentService {
 
   @Autowired
   private StudentRepository studentRepository;
@@ -17,16 +17,9 @@ public class StudentServiceimpl implements StudentService {
   }
 
   @Override
-  public Iterable<Student> findAll() {
-    return studentRepository.findAll();
-
-  }
-
-  @Override
-  public Student creatStudent(Student student) {
+  public Iterable<Student> creatStudent(Student student) {
     studentRepository.saveAndFlush(student);
-
-    return student;
+    return getAllStudents();
   }
 
   @Override
@@ -37,20 +30,20 @@ public class StudentServiceimpl implements StudentService {
       stu.setName(student.getName());
       stu.setBirthday(student.getBirthday());
       stu.setEmailAddress(student.getEmailAddress());
-      return studentRepository.save(stu);
-
+      studentRepository.saveAndFlush(stu);
+      return stu;
     } else {
       return null;
     }
   }
 
   @Override
-  public String deleteById(Integer studentId) {
-    Student student = studentRepository.findById(studentId).orElse(null);
+  public void deleteById(Integer studentId) {
     studentRepository.deleteById(studentId);
-
-    return "已完成刪除";
   }
 
-
+  @Override
+  public Iterable<Student> getAllStudents() {
+    return studentRepository.findAll();
+  }
 }
