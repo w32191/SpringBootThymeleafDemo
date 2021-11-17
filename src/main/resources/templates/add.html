@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>顯示</title>
+</head>
+<body>
+<h1>已完成新增！</h1>
+
+<li>ID: <span th:text="${studentresult.id}"></span></li>
+<li>Name: <span th:text="${studentresult.name}"></span></li>
+<li>Email: <span th:text="${studentresult.emailAddress}"></span></li>
+<li>Birthday: <span th:text="${studentresult.birthday}"></span></li>
+
+<form action="#" th:action="@{/mainmenu}">
+	<input type="submit" value="回選單"/>
+</form>
+
+
+</body>
+</html>
