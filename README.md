@@ -1,4 +1,4 @@
 # SpringBootThymeleafDemo
-# Spring boot
-# Spring Data JPA
-# Thymeleaf
+Spring boot
+Spring Data JPA
+Thymeleaf
