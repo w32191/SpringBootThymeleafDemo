@@ -14,16 +14,18 @@
 	<h2>Student List</h2>
 
 	<form class="header" th:action="@{/students}" method="post" th:object="${studentObject}">
-
 		<input type="text" id="inputName" placeholder="Name..." th:field="*{name}">
 		<input type="text" id="inputEmailAddress" placeholder="Email Address..."
 		       th:field="*{emailAddress}">
-		<input type="text" id="inputBirthday" placeholder="Birthday...(yyyy-mm-dd)" th:field="*{birthday}">
-		<p><button type="submit" class="addBtn">新增</button></p>
+		<input type="text" id="inputBirthday" placeholder="Birthday...(yyyy-mm-dd)"
+		       th:field="*{birthday}">
+		<p>
+			<button type="submit" class="addBtn">新增</button>
+		</p>
 
 
 	</form>
-<hr/>
+	<hr/>
 	<ul th:each="student: ${studentList}">
 		<li>
 			<form th:action="@{/editform}" method="post" th:object="${studentObject}">
@@ -32,17 +34,18 @@
 					<input type="hidden" name="id" th:value="${student.id}">
 				</p>
 				<p>
-					Name: <input type="text"  name="name" th:value="${student.name}">
+					Name: <input type="text" name="name" th:value="${student.name}">
 				</p>
 				<p>
 					Email Address: <input type="text" name="emailAddress" th:value="${student.emailAddress}">
 				</p>
 				<p>
-					Birthday: <input type="text" name="birthday"  th:value="${student.birthday}">
+					Birthday: <input type="text" name="birthday" th:value="${student.birthday}">
 				</p>
 				<button type="submit" class="edit">編輯</button>
 				<button type="button" class="close"
-				      th:onclick="'javascript:deleteStudent(event,this,' + ${student.id} + ')'">刪除</button>
+				        th:onclick="'javascript:deleteStudent(event,this,' + ${student.id} + ')'">刪除
+				</button>
 			</form>
 		</li>
 	</ul>

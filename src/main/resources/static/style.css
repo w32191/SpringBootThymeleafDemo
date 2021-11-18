@@ -132,3 +132,15 @@ input {
 .addBtn:hover {
     background-color: #bbb;
 }
+
+.backToMenu {
+    padding: 10px;
+    background: #C7AB7B;
+    color: #5C4319;
+    position: absolute;
+}
+
+.backToMenu:hover {
+    background-color: #f44336;
+    color: white;
+}
