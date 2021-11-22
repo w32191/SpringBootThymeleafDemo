@@ -144,3 +144,18 @@ input {
     background-color: #f44336;
     color: white;
 }
+
+.form-block {
+    background-color: #B3C2D5;
+    padding: 30px 40px;
+    color: #5C4319;
+    text-align: left;
+    border-radius: 15px 15px 0 0;
+    box-shadow: 0px 10px 15px #666;
+}
+
+.form-block:after {
+    content: "";
+    display: table;
+    clear: both;
+}

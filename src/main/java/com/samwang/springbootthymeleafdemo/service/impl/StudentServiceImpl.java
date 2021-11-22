@@ -1,7 +1,8 @@
-package com.samwang.springbootthymeleafdemo.service;
+package com.samwang.springbootthymeleafdemo.service.impl;
 
 import com.samwang.springbootthymeleafdemo.entity.Student;
 import com.samwang.springbootthymeleafdemo.repository.StudentRepository;
+import com.samwang.springbootthymeleafdemo.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
