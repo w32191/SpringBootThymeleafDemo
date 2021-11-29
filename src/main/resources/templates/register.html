@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" th:href="@{/style.css}">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
 	<title>註冊</title>
 	<head th:insert="load/js :: js"></head>
 </head>
@@ -11,7 +11,7 @@
 	<span>註冊</span>
 </section>
 <section class="from-block">
-	<form class="register-from" th:object="${memberAccount}" method="post"
+	<form class="register-from" id="registerForm" th:object="${memberAccount}" method="post"
 	      enctype="multipart/form-data" autocomplete="off">
 		<section class="form-input-block">
 			<div class="input-label">姓名</div>

@@ -55,20 +55,21 @@ public class MemberAccountServiceImpl implements MemberAccountService {
   }
 
   @Override
-  public Boolean login(MemberAccount memberAccount) {
+  public Member login(MemberAccount memberAccount) {
 
     //檢查帳號是否存在
     MemberAccount data = memberAccountRepository.findByAccount(memberAccount.getAccount());
     if (data == null) {
-      return false;
+      return null;
     }
 
     //核對密碼
     if (!data.getPassword()
         .equals(memberAccountRepository.getPassword(memberAccount.getPassword()))) {
-      return false;
+      return null;
     }
 
-    return true;
+    //取得會員資訊
+    return memberService.getDataByMa_id(data.getId());
   }
 }

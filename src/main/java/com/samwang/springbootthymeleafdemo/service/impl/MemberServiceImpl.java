@@ -19,7 +19,7 @@ public class MemberServiceImpl implements MemberService {
   }
 
   @Override
-  public Member getDataByMa_id(String ma_id) {
+  public Member getDataByMa_id(Long ma_id) {
     return memberRepository.findByMaID(ma_id);
   }
 }

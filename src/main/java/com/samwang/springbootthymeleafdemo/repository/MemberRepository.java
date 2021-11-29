@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
-  Member findByMaID(String ma_id);
+  Member findByMaID(Long ma_id);
 
 }

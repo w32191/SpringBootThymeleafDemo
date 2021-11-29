@@ -6,5 +6,5 @@ public interface MemberService {
 
 
   Member add(Member member);
-  Member getDataByMa_id(String ma_id);
+  Member getDataByMa_id(Long ma_id);
 }

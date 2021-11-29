@@ -1,6 +1,14 @@
 $(() => {
   $("#registerForm").on("submit", function() {
 
+    // 檢查姓名
+    var name = $("#name").val();
+    if(name == "") {
+      alert("請輸入姓名");
+      $("#name").focus();
+      return false;
+    }
+
     // 檢查帳號
     var account = $("#account").val();
     if(account == "") {
@@ -45,13 +53,14 @@ $(() => {
       url : "/register",
       type : "POST",
       data : {
+        "name" : name,
         "account" : account,
         "password" : password,
         "checkPassword" : checkPassword
       },
       dataType : "TEXT",
       success : function(res) {
-        if(res != null) {
+        if(res != "") {
           alert(res);
         }
         else {
